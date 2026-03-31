@@ -1,16 +1,17 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import React from 'react';
-import { useColorScheme } from 'react-native';
+import "react-native-gesture-handler";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+import { Slot } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { AlertProvider } from "@context/AlertProvider/AlertProvider";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <AlertProvider>
+        <StatusBar style="light" />
+        <Slot />
+      </AlertProvider>
+    </SafeAreaProvider>
   );
 }
