@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable, Text, View } from "react-native";
 import type { PriceAlert } from "@context/AlertProvider/useAlertProvider";
-import { formatPrice } from "@data/cryptoData";
+import { formatPrice } from "@utils/index";
 import { colors } from "@theme/colors";
 import { alertCardStyles } from "./AlertCard.styles";
 import { useAlertCard } from "./useAlertCard";

@@ -2,10 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import {
   cryptocurrencies as fallbackCryptos,
   fiatCurrencies,
-  formatPrice,
   fetchCryptocurrenciesFromApi,
   type Cryptocurrency,
 } from "@data/cryptoData";
+import { formatPrice } from "@utils/index";
 
 export function useConversionScreen() {
   const [amount, setAmount] = useState("");

@@ -16,7 +16,7 @@ export function useCryptoListScreen() {
     try {
       setLoadingState("loading");
       const data = await fetchCryptocurrenciesFromApi();
-      if (!data.length) {
+      if (!data.length || data.length === 0) {
         setLoadingState("empty");
         setCryptos([]);
         return;

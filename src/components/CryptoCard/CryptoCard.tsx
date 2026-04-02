@@ -1,6 +1,6 @@
 import { Text, View, Pressable } from "react-native";
 import type { Cryptocurrency } from "@data/cryptoData";
-import { formatChange, formatPrice } from "@data/cryptoData";
+import { formatChange, formatPrice } from "@utils/index";
 import { cryptoCardStyles } from "./CryptoCard.styles";
 import { useCryptoCard } from "./useCryptoCard";
 import { Image } from "expo-image";

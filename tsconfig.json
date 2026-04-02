@@ -11,7 +11,8 @@
       "@theme/*": ["./src/theme/*"],
       "@data/*": ["./src/data/*"],
       "@constants/*": ["./src/constants/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": [
