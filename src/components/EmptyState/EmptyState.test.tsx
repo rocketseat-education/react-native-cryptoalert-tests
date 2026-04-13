@@ -29,6 +29,7 @@ describe("EmptyState", () => {
     const icon = "🚀"
     const action = <Text>Criar alerta</Text>
     render(<EmptyState icon={<Text>{icon}</Text>} title={title} description={description} action={action} />)
-    const actionElement = screen.getByTestId("EmptyStateAction")
+    const actionElement = screen.queryByTestId("EmptyStateAction")
+    expect(actionElement).toBeNull()
   })
 })
