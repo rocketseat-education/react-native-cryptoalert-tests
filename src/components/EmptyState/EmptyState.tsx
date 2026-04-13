@@ -26,7 +26,7 @@ export function EmptyState({ icon, title, description, action }: EmptyStateProps
       {description ? (
         <Text style={emptyStateStyles.description}>{description}</Text>
       ) : null}
-      {action ? <View style={emptyStateStyles.actionWrap}>{action}</View> : null}
+      {action ? <View testID="EmptyStateAction" style={emptyStateStyles.actionWrap}>{action}</View> : null}
     </View>
   );
 }
