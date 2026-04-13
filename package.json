@@ -22,6 +22,7 @@
     "@react-navigation/bottom-tabs": "^7.15.5",
     "@react-navigation/elements": "^2.9.10",
     "@react-navigation/native": "^7.1.33",
+    "@expo/vector-icons": "^14.1.0",
     "expo": "~55.0.9",
     "expo-constants": "~55.0.9",
     "expo-device": "~55.0.10",

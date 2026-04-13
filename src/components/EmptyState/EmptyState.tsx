@@ -19,7 +19,6 @@ export function EmptyState({ icon, title, description, action }: EmptyStateProps
       <Text
         style={emptyStateStyles.title}
         nativeID={titleId}
-        accessibilityRole="header"
       >
         {title}
       </Text>
