@@ -1,4 +1,5 @@
-import { cryptocurrenciesMockResponse, fetchCryptocurrenciesFromApi } from "./cryptoData"
+import { cryptocurrenciesMockResponse } from "../../__mocks__/api/apiResponse"
+import { fetchCryptocurrenciesFromApi } from "./cryptoData"
 
 describe("API: CryptoData", () => {
   it("should fetch cryptocurrencies from the API", async () => {
