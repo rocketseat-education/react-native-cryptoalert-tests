@@ -71,6 +71,7 @@ export const cryptocurrenciesMockResponse: CryptocurrencyMockResponse[] = [
     symbol: "DOGE",
     current_price: 0.15,
     change24h: -2.11,
+    image: "https://assets.coingecko.com/coins/images/4128/large/solana.png?1747033571",
   },
   {
     id: "avalanche",
@@ -78,6 +79,7 @@ export const cryptocurrenciesMockResponse: CryptocurrencyMockResponse[] = [
     symbol: "AVAX",
     current_price: 38.45,
     change24h: 4.56,
+    image: "https://assets.coingecko.com/coins/images/4128/large/solana.png?1747033571",
   },
 ];
 
@@ -137,6 +139,7 @@ export const cryptocurrencies: Cryptocurrency[] = [
     symbol: "DOGE",
     price: 0.15,
     change24h: -2.11,
+    image: "https://assets.coingecko.com/coins/images/4128/large/solana.png?1747033571",
   },
   {
     id: "avalanche",
@@ -144,6 +147,7 @@ export const cryptocurrencies: Cryptocurrency[] = [
     symbol: "AVAX",
     price: 38.45,
     change24h: 4.56,
+    image: "https://assets.coingecko.com/coins/images/4128/large/solana.png?1747033571",
   },
 ];
 
