@@ -28,4 +28,24 @@ describe("Component: CryptoCard", () => {
     const avatar = screen.getByText(cryptoCurrenciesMock[0].symbol.charAt(0))
     expect(avatar).toBeTruthy()
   })
+
+  it("should render negative change correctly", () => {
+    render(
+      <AlertProvider>
+        <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], change24h: -10 }} />
+      </AlertProvider>
+    )
+    const change = screen.getByText("-10.00%")
+    expect(change).toBeTruthy()
+  })
+
+  it("should render positive change correctly", () => {
+    render(
+      <AlertProvider>
+        <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], change24h: 10 }} />
+      </AlertProvider>
+    )
+    const change = screen.getByText("+10.00%")
+    expect(change).toBeTruthy()
+  })
 })
