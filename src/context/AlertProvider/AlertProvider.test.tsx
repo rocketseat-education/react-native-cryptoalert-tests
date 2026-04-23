@@ -4,10 +4,11 @@ import { AlertProvider } from "./AlertProvider";
 
 describe("AlertProvider", () => {
   it("should render the children", () => {
-    render(
+    const { debug } = render(
       <AlertProvider>
         <Text>Teste</Text>
       </AlertProvider>,
-    );
-  });
-});
+    )
+    debug()
+  })
+})
