@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { colors } from "@theme/colors";
 import {
   FlatList,
   Modal,
@@ -6,7 +7,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { colors } from "@theme/colors";
 import { selectFieldStyles } from "./SelectField.styles";
 import type { SelectOption } from "./useSelectField";
 import { useSelectField } from "./useSelectField";
@@ -57,6 +57,7 @@ export function SelectField({
         animationType="slide"
         transparent
         onRequestClose={close}
+        testID="select-field-modal"
       >
         <View style={selectFieldStyles.modalRoot}>
           <Pressable
