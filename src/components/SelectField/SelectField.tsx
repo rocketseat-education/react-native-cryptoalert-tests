@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { EmptyState } from "../EmptyState/EmptyState";
 import { selectFieldStyles } from "./SelectField.styles";
 import type { SelectOption } from "./useSelectField";
 import { useSelectField } from "./useSelectField";
@@ -70,7 +71,9 @@ export function SelectField({
           <FlatList
             style={selectFieldStyles.optionList}
             data={options}
+            testID="select-field-list"
             keyExtractor={(item) => item.value}
+            ListEmptyComponent={<EmptyState icon={<Ionicons name="search" size={32} color={colors.iconMuted} />} title="No options found" description="There are no options to display at the moment." />}
             renderItem={({ item }) => (
               <Pressable
                 onPress={() => selectItem(item.value)}

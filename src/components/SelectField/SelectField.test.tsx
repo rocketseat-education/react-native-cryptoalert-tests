@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react-native"
 import { SelectField } from "./SelectField"
+import { SelectOption } from "./useSelectField"
 describe("Component: SelectField", () => {
   it("should return the current value selected", () => {
     const options = [
@@ -78,5 +79,35 @@ describe("Component: SelectField", () => {
     const selectedOption = screen.getByText(/bitcoin/i)
     fireEvent.press(selectedOption)
     expect(onChange).toHaveBeenCalledWith("1")
+  })
+  it("should show empty state when the options are empty", () => {
+    const options = [] as SelectOption[]
+    render(
+      <SelectField
+        label="Select Field"
+        options={options}
+        value=""
+        onChange={() => {}}
+      />
+    )
+    const button = screen.getByRole("button")
+    fireEvent.press(button)
+    const emptyStateElement = screen.queryByText(/No options found/i)
+    expect(emptyStateElement).toBeTruthy()
+  })
+  it("should flatlist data be empty when the options are empty", () => {
+    const options = [] as SelectOption[]
+    render(
+      <SelectField
+        label="Select Field"
+        options={options}
+        value=""
+        onChange={() => {}}
+      />
+    )
+    const button = screen.getByRole("button")
+    fireEvent.press(button)
+    const list = screen.queryByTestId("select-field-list")
+    expect(list?.props.data).toHaveLength(0)
   })
 })
