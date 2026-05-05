@@ -21,7 +21,7 @@ describe("Context: AlertProvider", () => {
       });
     });
     expect(result.current.alerts).toHaveLength(1);
-    AsyncStorage.clear();
+    await AsyncStorage.clear();
   });
   it("should delete an alert", async () => {
     const { result } = renderHook(() => useAlertProviderState())
@@ -70,6 +70,6 @@ describe("Context: AlertProvider", () => {
       });
     });
     expect(AsyncStorage.setItem).toHaveBeenCalledWith("cryptoAlerts", JSON.stringify(result.current.alerts));
-    AsyncStorage.clear();
+    await AsyncStorage.clear();
   });
 });
