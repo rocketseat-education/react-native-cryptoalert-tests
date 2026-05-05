@@ -3,6 +3,11 @@ import { render, screen } from "@testing-library/react-native";
 import { cryptoCurrenciesMock } from "../../../__mocks__/data/cryptoCurrencies";
 import { formatPrice } from "../../utils";
 import { CryptoCard } from "./CryptoCard";
+
+jest.mock("@utils/index", () => ({
+  formatPrice: jest.fn().mockReturnValue("1,000.00"),
+  formatChange: jest.fn().mockReturnValue("+10.00%"),
+}))
 describe("Component: CryptoCard", () => {
   it("should render the crypto name, symbol and price", () => {
     const { getByText, debug } = render(
