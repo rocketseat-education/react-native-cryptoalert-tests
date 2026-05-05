@@ -11,7 +11,7 @@ jest.mock("@utils/index", () => ({
 jest.mock("./useCryptoCard", () => ({
   useCryptoCard: jest.fn().mockReturnValue({
     isPositive: true,
-    hasAlert: false,
+    hasAlert: true,
     alertsForCrypto: [{
       id: "1",
       cryptocurrency: "Bitcoin",
@@ -68,5 +68,16 @@ describe("Component: CryptoCard", () => {
     )
     const change = screen.getByText("+10.00%")
     expect(change).toBeTruthy()
+  })
+
+  it("should render alert badge when has alerts", () => {
+    const { debug } = render(
+      <AlertProvider>
+        <CryptoCard crypto={cryptoCurrenciesMock[0]} />
+      </AlertProvider>
+    )
+    debug()
+    const alertBadge = screen.getByLabelText("Toggle alerts for this cryptocurrency")
+    expect(alertBadge).toBeTruthy()
   })
 })
