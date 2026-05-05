@@ -1,4 +1,3 @@
-import { AlertProvider } from "@context/AlertProvider/AlertProvider";
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { cryptoCurrenciesMock } from "../../../__mocks__/data/cryptoCurrencies";
 import { CryptoCard } from "./CryptoCard";
@@ -27,12 +26,9 @@ jest.mock("./useCryptoCard", () => ({
 }))
 describe("Component: CryptoCard", () => {
   it("should render the crypto name, symbol and price", () => {
-    const { getByText, debug, getByLabelText } = render(
-      <AlertProvider>
+    const { getByText, getByLabelText } = render(
         <CryptoCard crypto={cryptoCurrenciesMock[0]} />
-      </AlertProvider>
     )
-    debug()
     const name =getByText(cryptoCurrenciesMock[0].name)
     const symbol = getByText(cryptoCurrenciesMock[0].symbol)
     const price = getByLabelText("Price")
@@ -43,9 +39,7 @@ describe("Component: CryptoCard", () => {
 
   it("should render first letter of the crypto symbol as avatar if crypto has no image", () => {
     render(
-      <AlertProvider>
         <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], image: undefined }} />
-      </AlertProvider>
     )
     const avatar = screen.getByText(cryptoCurrenciesMock[0].symbol.charAt(0))
     expect(avatar).toBeTruthy()
@@ -53,9 +47,7 @@ describe("Component: CryptoCard", () => {
 
   it("should render negative change correctly", () => {
     render(
-      <AlertProvider>
         <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], change24h: -10 }} />
-      </AlertProvider>
     )
     const change = screen.getByText("-10.00%")
     expect(change).toBeTruthy()
@@ -63,21 +55,16 @@ describe("Component: CryptoCard", () => {
 
   it("should render positive change correctly", () => {
     render(
-      <AlertProvider>
         <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], change24h: 10 }} />
-      </AlertProvider>
     )
     const change = screen.getByText("+10.00%")
     expect(change).toBeTruthy()
   })
 
   it("should render alert badge when has alerts", () => {
-    const { debug } = render(
-      <AlertProvider>
+    render(
         <CryptoCard crypto={cryptoCurrenciesMock[0]} />
-      </AlertProvider>
     )
-    debug()
     const alertBadge = screen.getByLabelText("Toggle alerts for this cryptocurrency")
     expect(alertBadge).toBeTruthy()
   })
@@ -98,9 +85,7 @@ describe("Component: CryptoCard", () => {
       toggleExpanded,
     })
     render(
-      <AlertProvider>
         <CryptoCard crypto={cryptoCurrenciesMock[0]} />
-      </AlertProvider>
     )
     const alertBadge = screen.getByLabelText("Toggle alerts for this cryptocurrency")
     fireEvent.press(alertBadge)
@@ -121,12 +106,9 @@ describe("Component: CryptoCard", () => {
       expanded: true,
       toggleExpanded: jest.fn(),
     })
-    const { debug } = render(
-      <AlertProvider>
-        <CryptoCard crypto={cryptoCurrenciesMock[0]} />
-      </AlertProvider>
+    render(
+      <CryptoCard crypto={cryptoCurrenciesMock[0]} />
     )
-    debug()
     const alertList = screen.getByLabelText("Alert list")
     expect(alertList).toBeTruthy()
   })

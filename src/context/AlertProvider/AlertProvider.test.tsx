@@ -6,12 +6,13 @@ import { AlertProvider } from "./AlertProvider";
 import { useAlerts } from "./useAlertProvider";
 
 describe("AlertProvider", () => {
-  it("should render the children", () => {
+  it("should render the children", async () => {
     const { getByText } = render(
       <AlertProvider>
         <Text>Teste</Text>
       </AlertProvider>,
     )
+    await waitFor(() => {})
     getByText("Teste")
     expect(getByText("Teste")).toBeTruthy()
     jest.clearAllMocks()
