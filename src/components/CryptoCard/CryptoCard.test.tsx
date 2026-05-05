@@ -1,7 +1,8 @@
 import { AlertProvider } from "@context/AlertProvider/AlertProvider";
-import { render, screen } from "@testing-library/react-native";
+import { fireEvent, render, screen } from "@testing-library/react-native";
 import { cryptoCurrenciesMock } from "../../../__mocks__/data/cryptoCurrencies";
 import { CryptoCard } from "./CryptoCard";
+import { useCryptoCard } from "./useCryptoCard";
 
 jest.mock("@utils/index", () => ({
   formatPrice: jest.fn().mockReturnValue("1,000.00"),
@@ -79,5 +80,54 @@ describe("Component: CryptoCard", () => {
     debug()
     const alertBadge = screen.getByLabelText("Toggle alerts for this cryptocurrency")
     expect(alertBadge).toBeTruthy()
+  })
+  it("should call toggleExpanded when alert badge is pressed", () => {
+    const toggleExpanded: jest.Mock = jest.fn();
+    (useCryptoCard as jest.Mock).mockReturnValue({
+      isPositive: true,
+      hasAlert: true,
+      alertsForCrypto: [{
+        id: "1",
+        cryptocurrency: "Bitcoin",
+        symbol: "BTC",
+        targetPrice: 100000,
+        condition: "above",
+        createdAt: new Date().toISOString(),
+      }],
+      expanded: true,
+      toggleExpanded,
+    })
+    render(
+      <AlertProvider>
+        <CryptoCard crypto={cryptoCurrenciesMock[0]} />
+      </AlertProvider>
+    )
+    const alertBadge = screen.getByLabelText("Toggle alerts for this cryptocurrency")
+    fireEvent.press(alertBadge)
+    expect(toggleExpanded).toHaveBeenCalledTimes(1)
+  })
+  it("should render alert list when expanded", () => {
+    (useCryptoCard as jest.Mock).mockReturnValue({
+      isPositive: true,
+      hasAlert: true,
+      alertsForCrypto: [{
+        id: "1",
+        cryptocurrency: "Bitcoin",
+        symbol: "BTC",
+        targetPrice: 100000,
+        condition: "above",
+        createdAt: new Date().toISOString(),
+      }],
+      expanded: true,
+      toggleExpanded: jest.fn(),
+    })
+    const { debug } = render(
+      <AlertProvider>
+        <CryptoCard crypto={cryptoCurrenciesMock[0]} />
+      </AlertProvider>
+    )
+    debug()
+    const alertList = screen.getByLabelText("Alert list")
+    expect(alertList).toBeTruthy()
   })
 })
