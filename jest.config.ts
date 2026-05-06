@@ -12,12 +12,24 @@ const config: Config = {
     "/__tests__/utils/",
     "/__tests__/coverage/"
   ],
+  collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.ts',
     'src/**/*.tsx',
     '!src/**/*.test.tsx',
     '!src/**/*.test.ts',
     '!src/**/*.styles.ts',
+  ],
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "/__tests__/utils/",
+    "/__tests__/coverage/",
+    "/__mocks__/"
+  ],
+  coverageReporters: [
+    "json",
+    "lcov",
+    "html"
   ]
 }
 
