@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react-native";
+import { formatChange } from "@utils/index";
 import { cryptoCurrenciesMock } from "../../../__mocks__/data/cryptoCurrencies";
 import { CryptoCard } from "./CryptoCard";
 import { useCryptoCard } from "./useCryptoCard";
@@ -19,7 +20,8 @@ jest.mock("./useCryptoCard", () => ({
       targetPrice: 10000,
       condition: "above",
       createdAt: new Date().toISOString(),
-    }],
+    }
+  ],
     expanded: false,
     toggleExpanded: jest.fn(),
   }),
@@ -45,19 +47,36 @@ describe("Component: CryptoCard", () => {
     expect(avatar).toBeTruthy()
   })
 
-  it("should render negative change correctly", () => {
+  it("should render positive change correctly", () => {
+    (formatChange as jest.Mock).mockReturnValue("+10.00%")
     render(
-        <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], change24h: -10 }} />
+        <CryptoCard crypto={cryptoCurrenciesMock[0]} />
     )
-    const change = screen.getByText("-10.00%")
+    const change = screen.getByText("+10.00%")
     expect(change).toBeTruthy()
   })
 
-  it("should render positive change correctly", () => {
+  it("should render negative change correctly", () => {
+    (useCryptoCard as jest.Mock).mockReturnValue({
+      isPositive: false,
+      hasAlert: true,
+      alertsForCrypto: [{
+        id: "1",
+        cryptocurrency: "Bitcoin",
+        symbol: "BTC",
+        targetPrice: 10000,
+        condition: "above",
+        createdAt: new Date().toISOString(),
+      }
+    ],
+      expanded: false,
+      toggleExpanded: jest.fn(),
+    });
+    (formatChange as jest.Mock).mockReturnValue("-10.00%")
     render(
-        <CryptoCard crypto={{ ...cryptoCurrenciesMock[0], change24h: 10 }} />
+        <CryptoCard crypto={cryptoCurrenciesMock[0]} />
     )
-    const change = screen.getByText("+10.00%")
+    const change = screen.getByText("-10.00%")
     expect(change).toBeTruthy()
   })
 
@@ -102,7 +121,16 @@ describe("Component: CryptoCard", () => {
         targetPrice: 100000,
         condition: "above",
         createdAt: new Date().toISOString(),
-      }],
+      },
+      {
+        id: "2",
+        cryptocurrency: "Ethereum",
+        symbol: "ETH",
+        targetPrice: 10000,
+        condition: "below",
+        createdAt: new Date().toISOString(),
+      },
+    ],
       expanded: true,
       toggleExpanded: jest.fn(),
     })
