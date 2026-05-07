@@ -38,6 +38,7 @@ export function SelectField({
         onPress={open}
         style={selectFieldStyles.field}
         accessibilityRole="button"
+        accessibilityLabel={label}
       >
         <View style={selectFieldStyles.fieldInner}>
           <Text

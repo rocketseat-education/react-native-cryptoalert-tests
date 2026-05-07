@@ -1,3 +1,5 @@
+import { formatPrice } from "@/utils"
+import { cryptoCurrenciesMock, fiatCurrenciesMock } from "@mocks/data/cryptoCurrencies"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react-native"
 import { ConversionScreen } from "./ConversionScreen"
 
@@ -39,7 +41,28 @@ describe("Screen: ConversionScreen", () => {
     const amountInput = screen.getByPlaceholderText("0.00")
     fireEvent.changeText(amountInput, "1")
     await waitFor(() => {
-      expect(screen.getByText("$67999.50")).toBeTruthy()
+      expect(screen.getByText(`$${formatPrice(cryptoCurrenciesMock[0].price * fiatCurrenciesMock[0].rate)}`)).toBeTruthy()
+    })
+  })
+
+  it("should show the converted amount when the amount is valid and the fiat currency is selected", async() => {
+    render(<ConversionScreen />)
+    const amountInput = screen.getByPlaceholderText("0.00")
+    fireEvent.changeText(amountInput, "1")
+    await waitFor(() => {
+      expect(screen.getByText(`$${formatPrice(cryptoCurrenciesMock[0].price * fiatCurrenciesMock[0].rate)}`)).toBeTruthy()
+    })
+    // selecionar uma crypto
+    const selectCryptoButton = screen.getByLabelText("Cryptocurrency")
+    fireEvent.press(selectCryptoButton)
+    const selectedCrypto = screen.getByText("Ethereum")
+    fireEvent.press(selectedCrypto)
+    const selectFiatButton = screen.getByLabelText("Fiat Currency")
+    fireEvent.press(selectFiatButton)
+    const selectedFiat = screen.getByText("BRL")
+    fireEvent.press(selectedFiat)
+    await waitFor(() => {
+      expect(screen.getByText(`R$${formatPrice(cryptoCurrenciesMock[1].price * fiatCurrenciesMock[1].rate)}`)).toBeTruthy()
     })
   })
 })
