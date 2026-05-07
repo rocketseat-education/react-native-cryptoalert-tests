@@ -5,6 +5,8 @@ import { cryptoAlertsMock } from "../../../__mocks__/storage/cryptoAlerts";
 import { AlertProvider } from "./AlertProvider";
 import { useAlerts } from "./useAlertProvider";
 
+// beforeEach, afterEach, afterAll, beforeAll
+
 describe("AlertProvider", () => {
   it("should render the children", async () => {
     const { getByText } = render(
