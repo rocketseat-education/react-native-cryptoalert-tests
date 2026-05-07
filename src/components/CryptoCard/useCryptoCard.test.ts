@@ -1,7 +1,7 @@
 import { useAlerts } from "@/context/AlertProvider/useAlertProvider"
-import { cryptoCurrenciesMock } from "@__mocks__/data/cryptoCurrencies"
-import { cryptoAlertsMock } from "@__mocks__/storage/cryptoAlerts"
-import { act, renderHook, waitFor } from "@__tests__/utils/test-utils"
+import { cryptoCurrenciesMock } from "@mocks/data/cryptoCurrencies"
+import { cryptoAlertsMock } from "@mocks/storage/cryptoAlerts"
+import { act, renderHook, waitFor } from "@tests/utils/test-utils"
 import { useCryptoCard } from "./useCryptoCard"
 jest.mock("@context/AlertProvider/useAlertProvider", () => ({
   ...jest.requireActual("@context/AlertProvider/useAlertProvider"),

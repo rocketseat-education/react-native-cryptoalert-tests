@@ -1,6 +1,6 @@
-import { cryptoAlertsMock } from "@__mocks__/storage/cryptoAlerts";
-import { act, renderHook, waitFor } from "@__tests__/utils/test-utils";
+import { cryptoAlertsMock } from "@mocks/storage/cryptoAlerts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { act, renderHook, waitFor } from "@tests/utils/test-utils";
 import { useAlerts } from "./useAlertProvider";
 
 describe("Context: useAlerts", () => {
