@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react-native"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react-native"
 import { ConversionScreen } from "./ConversionScreen"
 
 jest.mock("@data/cryptoData", () => {
@@ -22,5 +22,15 @@ describe("Screen: ConversionScreen", () => {
   it("should render correctly", () => {
     const { getByText } = render(<ConversionScreen />)
     expect(getByText("Convert Crypto")).toBeTruthy()
+    expect(getByText("Enter an amount")).toBeTruthy()
+  })
+
+  it("should render the invalid amount message when the amount is invalid", async() => {
+    render(<ConversionScreen />)
+    const amountInput = screen.getByPlaceholderText("0.00")
+    fireEvent.changeText(amountInput, "1,00")
+    await waitFor(() => {
+      expect(screen.getByText("Invalid amount")).toBeTruthy()
+    })
   })
 })
