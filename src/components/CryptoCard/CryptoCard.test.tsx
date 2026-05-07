@@ -1,6 +1,6 @@
+import { cryptoCurrenciesMock } from "@mocks/data/cryptoCurrencies";
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { formatChange } from "@utils/index";
-import { cryptoCurrenciesMock } from "../../../__mocks__/data/cryptoCurrencies";
 import { CryptoCard } from "./CryptoCard";
 import { useCryptoCard } from "./useCryptoCard";
 

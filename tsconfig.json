@@ -32,10 +32,10 @@
       "@utils/*": [
         "./src/utils/*"
       ],
-      "@__tests__/*": [
+      "@tests/*": [
         "./__tests__/*"
       ],
-      "@__mocks__/*": [
+      "@mocks/*": [
         "./__mocks__/*"
       ]
     }

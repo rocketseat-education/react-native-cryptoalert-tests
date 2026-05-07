@@ -1,4 +1,4 @@
-import { cryptocurrenciesMockResponse } from "../../__mocks__/api/apiResponse"
+import { cryptocurrenciesMockResponse } from "@mocks/api/apiResponse"
 import { fetchCryptocurrenciesFromApi } from "./cryptoData"
 
 describe("API: CryptoData", () => {

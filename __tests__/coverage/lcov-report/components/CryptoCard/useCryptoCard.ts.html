@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,58 +97,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useCallback, useMemo, useState } from "react";
 import type { Cryptocurrency } from "@data/cryptoData";
 import { useAlerts, type PriceAlert } from "@context/AlertProvider/useAlertProvider";
 &nbsp;
-export function useCryptoCard(crypto: Cryptocurrency) {
-  const { alerts } = useAlerts();
+export function <span class="fstat-no" title="function not covered" >useCryptoCard(</span>crypto: Cryptocurrency) {
+  const { alerts } = <span class="cstat-no" title="statement not covered" >useAlerts();</span>
 &nbsp;
-  const alertsForCrypto: PriceAlert[] = useMemo(
-    () =&gt;
-      alerts.filter(
-        (alert) =&gt;
-          alert.symbol.toUpperCase() === crypto.symbol.toUpperCase() ||
+  const alertsForCrypto: PriceAlert[] = <span class="cstat-no" title="statement not covered" >useMemo(</span>
+<span class="fstat-no" title="function not covered" >    ()</span> =&gt;
+<span class="cstat-no" title="statement not covered" >      alerts.filter(</span>
+<span class="fstat-no" title="function not covered" >        (a</span>lert) =&gt;
+<span class="cstat-no" title="statement not covered" >          alert.symbol.toUpperCase() === crypto.symbol.toUpperCase() ||</span>
           alert.cryptocurrency.toLowerCase() === crypto.name.toLowerCase(),
       ),
     [alerts, crypto.name, crypto.symbol],
   );
 &nbsp;
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 &nbsp;
-  const toggleExpanded = useCallback(() =&gt; {
-    if (!alertsForCrypto.length) return;
-    setExpanded((prev) =&gt; !prev);
+  const toggleExpanded = <span class="cstat-no" title="statement not covered" >useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if (!alertsForCrypto.length) <span class="cstat-no" title="statement not covered" >return;</span></span>
+<span class="cstat-no" title="statement not covered" >    setExpanded(<span class="fstat-no" title="function not covered" >(p</span>rev) =&gt; <span class="cstat-no" title="statement not covered" >!prev)</span>;</span>
   }, [alertsForCrypto.length]);
 &nbsp;
-  const isPositive = crypto.change24h &gt;= 0;
-  const hasAlert = alertsForCrypto.length &gt; 0;
+  const isPositive = <span class="cstat-no" title="statement not covered" >crypto.change24h &gt;= 0;</span>
+  const hasAlert = <span class="cstat-no" title="statement not covered" >alertsForCrypto.length &gt; 0;</span>
 &nbsp;
-  return { isPositive, hasAlert, alertsForCrypto, expanded, toggleExpanded };
+<span class="cstat-no" title="statement not covered" >  return { isPositive, hasAlert, alertsForCrypto, expanded, toggleExpanded };</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -157,7 +157,7 @@ export function useCryptoCard(crypto: Cryptocurrency) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-06T11:44:02.378Z
+                at 2026-05-07T10:44:06.458Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
