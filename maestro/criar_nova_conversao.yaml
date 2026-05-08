@@ -1,0 +1,20 @@
+appId: com.anonymous.cryptoalert
+---
+- launchApp:
+    clearState: true
+- tapOn: "Convert, tab, 2 of 3"
+- tapOn:
+    id: "amount-input"
+- inputRandomNumber:
+    length: 1
+# - tapOn: "Done"
+- tapOn:
+    id: "select-field-button-Cryptocurrency"
+- waitForAnimationToEnd
+- tapOn: "Ethereum, ETH"
+- tapOn:
+    id: "select-field-button-Fiat Currency"
+- waitForAnimationToEnd
+- tapOn: "BRL, R$"
+- assertVisible:
+    id: "valid-converted-amount"

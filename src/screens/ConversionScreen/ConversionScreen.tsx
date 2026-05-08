@@ -38,6 +38,7 @@ export function ConversionScreen() {
           value={amount}
           onChangeText={setAmount}
           keyboardType="decimal-pad"
+          testID="amount-input"
         />
       </View>
 
@@ -70,7 +71,7 @@ export function ConversionScreen() {
         ) : showInvalid ? (
           <Text style={conversionScreenStyles.resultInvalid}>Invalid amount</Text>
         ) : (
-          <Text style={conversionScreenStyles.resultValue}>
+          <Text testID="valid-converted-amount" style={conversionScreenStyles.resultValue}>
             {formattedResult ?? ""}
           </Text>
         )}

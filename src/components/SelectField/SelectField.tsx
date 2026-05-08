@@ -39,7 +39,7 @@ export function SelectField({
         style={selectFieldStyles.field}
         accessibilityRole="button"
         accessibilityLabel={label}
-        testID="select-field-button"
+        testID={`select-field-button-${label}`}
       >
         <View style={selectFieldStyles.fieldInner}>
           <Text

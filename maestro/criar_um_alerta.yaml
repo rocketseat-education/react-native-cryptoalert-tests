@@ -5,7 +5,7 @@ appId: com.anonymous.cryptoalert
 - tapOn: "Alerts, tab, 3 of 3"
 - tapOn: "\uea04, New Alert"
 - tapOn:
-    id: "select-field-button"
+    id: "select-field-button-Cryptocurrency"
 - waitForAnimationToEnd
 - tapOn: "Bitcoin, BTC"
 - tapOn:
