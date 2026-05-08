@@ -1,9 +1,9 @@
-import { ScrollView, Text, TextInput, View } from "react-native";
 import { ConditionOptionRow } from "@components/ConditionOptionRow/ConditionOptionRow";
 import { PrimaryButton } from "@components/PrimaryButton/PrimaryButton";
 import { ScreenHeader } from "@components/ScreenHeader/ScreenHeader";
 import { SelectField } from "@components/SelectField/SelectField";
 import { colors } from "@theme/colors";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import { createAlertScreenStyles } from "./CreateAlertScreen.styles";
 import { useCreateAlertScreen } from "./useCreateAlertScreen";
 
@@ -56,6 +56,9 @@ export function CreateAlertScreen() {
               value={targetPrice}
               onChangeText={setTargetPrice}
               keyboardType="decimal-pad"
+              testID="target-price-input"
+              accessibilityLabel="Target price input"
+              returnKeyType="done"
             />
           </View>
         </View>

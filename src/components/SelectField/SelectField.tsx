@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { EmptyState } from "../EmptyState/EmptyState";
+import { EmptyState } from "../../components/EmptyState/EmptyState";
 import { selectFieldStyles } from "./SelectField.styles";
 import type { SelectOption } from "./useSelectField";
 import { useSelectField } from "./useSelectField";
@@ -39,6 +39,7 @@ export function SelectField({
         style={selectFieldStyles.field}
         accessibilityRole="button"
         accessibilityLabel={label}
+        testID="select-field-button"
       >
         <View style={selectFieldStyles.fieldInner}>
           <Text

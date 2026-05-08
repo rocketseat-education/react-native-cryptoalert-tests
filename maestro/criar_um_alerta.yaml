@@ -1,0 +1,17 @@
+appId: com.anonymous.cryptoalert
+---
+- launchApp:
+    clearState: true
+- tapOn: "Alerts, tab, 3 of 3"
+- tapOn: "\uea04, New Alert"
+- tapOn:
+    id: "select-field-button"
+- waitForAnimationToEnd
+- tapOn: "Bitcoin, BTC"
+- tapOn:
+    id: "target-price-input"
+- inputText: "80000"
+- tapOn: "Done"
+- tapOn: "Save Alert"
+- tapOn: "List, tab, 1 of 3"
+- tapOn: "Toggle alerts for this cryptocurrency"

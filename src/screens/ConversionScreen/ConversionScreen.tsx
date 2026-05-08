@@ -1,7 +1,7 @@
-import { Ionicons } from "@expo/vector-icons";
-import { ScrollView, Text, TextInput, View } from "react-native";
 import { SelectField } from "@components/SelectField/SelectField";
+import { Ionicons } from "@expo/vector-icons";
 import { colors } from "@theme/colors";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import { conversionScreenStyles } from "./ConversionScreen.styles";
 import { useConversionScreen } from "./useConversionScreen";
 
